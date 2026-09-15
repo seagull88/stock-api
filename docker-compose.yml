@@ -1,0 +1,20 @@
+services:
+
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: stockuser
+      POSTGRES_PASSWORD: stockpass
+      POSTGRES_DB: stocks
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  api:
+    build: .
+    ports:
+      - "8001:8000"
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:

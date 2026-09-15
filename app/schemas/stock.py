@@ -1,0 +1,8 @@
+from pydantic import BaseModel
+
+
+class StockCreate(BaseModel):
+    ticker: str
+    company: str
+    price: float
+
